@@ -8,4 +8,4 @@ The server scrapes Coinbase every hour.
 - BeautifulSoup
 - Pandas
 - APScheduler
-- cloudscraper
+- Cloudscraper
