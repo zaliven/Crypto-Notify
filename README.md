@@ -1,6 +1,6 @@
 # Crypto Notify
 ## Overview 
-This is a server that outputs to a console and sends an email whenever a new coin is listed on Coinbase.
+Whenever new crypto currencies are listed on Coinbase, the server sends a notification via email (using Gmail as the provider).
 
 The server scrapes Coinbase every hour.
 
