@@ -5,7 +5,8 @@ import re
 from time import sleep
 from datetime import datetime
 import smtplib
-from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
+import atexit
 import cloudscraper
 
 # For printing colorful messages
@@ -108,7 +109,15 @@ def main():
         print(new_coins_detected_str)
 
 
+
 main()
-scheduler = BackgroundScheduler()
+scheduler = BlockingScheduler()
 scheduler.add_job(func=main, trigger="interval", hours=1)
-scheduler.start()
+try:
+    scheduler.start()
+except (KeyboardInterrupt, SystemExit):
+    pass
+
+
+# Shut down the scheduler when exiting the app
+atexit.register(lambda: scheduler.shutdown())
